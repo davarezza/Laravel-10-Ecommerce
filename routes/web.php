@@ -18,4 +18,5 @@ use App\Http\Controllers\GuestController;
 //     return view('welcome');
 // });
 
-Route::get('/', [GuestController::class, 'index']);
+Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::get('/about', [GuestController::class, 'about'])->name('about');

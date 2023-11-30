@@ -8,6 +8,15 @@ class GuestController extends Controller
 {
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'active' => 'home',
+        ]);
+    }
+
+    public function about()
+    {
+        return view('about', [
+            'active' => 'about',
+        ]);
     }
 }
