@@ -31,34 +31,8 @@
 
     @include('layouts.footer')
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-</script>
-<script>
-    // init Isotope
-    var $grid = $('.collection-list').isotope({
-        // options
-    });
-    // filter items on button click
-    $('.filter-button-group').on('click', 'button', function() {
-        var filterValue = $(this).attr('data-filter');
-        resetFilterBtns();
-        $(this).addClass('active-filter-btn');
-        $grid.isotope({
-            filter: filterValue
-        });
-    });
-
-    var filterBtns = $('.filter-button-group').find('button');
-
-    function resetFilterBtns() {
-        filterBtns.each(function() {
-            $(this).removeClass('active-filter-btn');
-        });
-    }
 </script>
 </body>
 

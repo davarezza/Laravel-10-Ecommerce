@@ -16,9 +16,58 @@ class AuthController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required|min:3|max:255'
+        ]);
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
+        User::create($validatedData);
+
+        // Add a flash message to the session
+        session()->flash('success', 'Login to continue.');
+
+        return redirect('login');
+    }
+
     public function login() {
         return view('auth/login', [
             'active' => 'login'
         ]);
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            session()->flash('success', 'Login successful, enjoy the website!');
+
+            return redirect()->intended('/');
+        }
+
+        return back()->with('loginError', 'Login Failed');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+
+        request()->session()->regenerateToken();
+
+        session()->flash('success', 'Thank you for visiting this website');
+
+        return redirect('/');
     }
 }

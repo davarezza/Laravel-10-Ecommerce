@@ -10,7 +10,7 @@
                         <i class='bx bxs-map' ></i>
                     </span>
                     <span class = "fw-light">
-                        Albert Street, New York, AS 756, United States of America
+                        Pasuruan, Jawa Timur
                     </span>
                 </div>
                 <div class = "d-flex justify-content-start align-items-start my-2">
@@ -18,7 +18,7 @@
                         <i class='bx bxs-envelope' ></i>
                     </span>
                     <span class = "fw-light">
-                        attire.support@gmail.com
+                        savorsalads@gmail.com
                     </span>
                 </div>
                 <div class = "d-flex justify-content-start align-items-start my-2">
@@ -26,7 +26,7 @@
                         <i class='bx bxs-phone'></i>
                     </span>
                     <span class = "fw-light">
-                        +9786 6776 236
+                        +0838-3583-922
                     </span>
                 </div>
             </div>

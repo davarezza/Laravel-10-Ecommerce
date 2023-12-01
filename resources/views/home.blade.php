@@ -10,10 +10,19 @@
         <div id="header" class="vh-100 carousel slide" data-bs-ride="carousel">
             <div class="container d-flex align-items-center carousel-inner top-50 start-50 translate-middle banner">
                 <div class="text-center carousel-item active">
-                    <h2 class="text-capitalize text-dark">Don't have an account or</h2>
-                    <h2 class="text-capitalize py-2 text-dark">haven't logged in yet ?</h2>
-                    <a href="{{ route('login') }}" class="btn mt-3 text-uppercase mx-2">Login</a>
-                    <a href="{{ route('register') }}" class="btn mt-3 text-uppercase mx-2">Register</a>
+                    @auth
+                        <h2 class="text-capitalize text-dark">Welcome, <span class="fw-bold">{{ auth()->user()->name }}</span></h2>
+                        <h2 class="text-capitalize py-2 text-dark">want to exit of your account?</h2>
+                        <form action="/logout" method="post">
+                            @csrf
+                            <button type="submit" class="btn mt-3 text-uppercase mx-2">Log out</button>
+                        </form>
+                    @else
+                        <h2 class="text-capitalize text-dark">Don't have an account or</h2>
+                        <h2 class="text-capitalize py-2 text-dark">haven't logged in yet ?</h2>
+                        <a href="{{ route('login') }}" class="btn mt-3 text-uppercase mx-2">Log in</a>
+                        <a href="{{ route('register') }}" class="btn mt-3 text-uppercase mx-2">Register</a>
+                    @endauth
                 </div>
                 <div class="text-center carousel-item">
                     <h2 class="text-capitalize text-dark">Best Collection</h2>
