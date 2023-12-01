@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+<title>Home | {{ config('app.name') }}</title>
+@endsection
+
 @section('container')
 {{-- Header --}}
     <header>
@@ -8,8 +12,8 @@
                 <div class="text-center carousel-item active">
                     <h2 class="text-capitalize text-dark">Don't have an account or</h2>
                     <h2 class="text-capitalize py-2 text-dark">haven't logged in yet ?</h2>
-                    <a href="#" class="btn mt-3 text-uppercase mx-2">Login</a>
-                    <a href="#" class="btn mt-3 text-uppercase mx-2">Register</a>
+                    <a href="{{ route('login') }}" class="btn mt-3 text-uppercase mx-2">Login</a>
+                    <a href="{{ route('register') }}" class="btn mt-3 text-uppercase mx-2">Register</a>
                 </div>
                 <div class="text-center carousel-item">
                     <h2 class="text-capitalize text-dark">Best Collection</h2>

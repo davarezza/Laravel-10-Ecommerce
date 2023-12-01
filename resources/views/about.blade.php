@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@section('title')
+<title>About Us | {{ config('app.name') }}</title>
+@endsection
+
 @section('container')
     {{-- About Us --}}
     <section id = "about" class = "py-5">
