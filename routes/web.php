@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\SaladController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store']);
+
+Route::get('/cart/{id}', [SaladController::class, 'addSalad'])->name('addsalad.to.cart')->middleware('auth');

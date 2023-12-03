@@ -56,171 +56,26 @@
             <div class="row g-0">
                 <div class="d-flex flex-wrap justify-content-center mt-5">
                     <button class="btn m-2 text-dark active-filter-btn" type="button">All</button>
-                    <button class="btn m-2 text-dark" type="button">Best Sellers</button>
+                    {{-- <button class="btn m-2 text-dark" type="button">Best Sellers</button>
                     <button class="btn m-2 text-dark" type="button">Featured</button>
-                    <button class="btn m-2 text-dark" type="button">New</button>
+                    <button class="btn m-2 text-dark" type="button">New</button> --}}
                 </div>
 
                 <div class = "collection-list mt-4 row gx-0 gy-3">
+                    @foreach ($salads as $key => $data )
                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
                         <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size200.jpg') }}" class = "w-100">
+                            <img src = "{{ asset('fotosalad/'.$data->image) }}" class = "w-100">
                             <span
                                 class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
                         </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
+                        <div class = "text-center mt-2">
+                            <p class = "text-capitalize my-1">{{ $data->name }}</p>
+                            <span class = "fw-bold">$ {{ $data->price }}</span><br>
+                            <a href = "{{ route('addsalad.to.cart', $data->id) }}" class = "btn btn-primary mt-3">Add to Cart</a>
                         </div>
                     </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 feat">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size300.jpeg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 new">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size400.jpg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size1k02.jpg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 feat">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size650.jpg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 new">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size750.jpg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size1k.jpg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
-
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 feat">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('img/size600.jpg') }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                        </div>
-                        <div class = "text-center">
-                            <div class = "rating mt-3">
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                                <span class = "text-primary"><i class='bx bx-star'></i></span>
-                            </div>
-                            <p class = "text-capitalize my-1">gray shirt</p>
-                            <span class = "fw-bold">$ 45.50</span><br>
-                            <a href = "#" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
