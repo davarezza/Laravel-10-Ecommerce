@@ -24,10 +24,10 @@
             </div>
 
             <div class="order-lg-2 side-icon nav-btns">
-                <a href="#" class="position-relative text-dark text-center px-2 py-2">
+                <a href="{{ route('cart') }}" class="position-relative text-dark text-center px-2 py-2">
                     <i class='bx bxs-cart'></i>
                 </a>
-                <span class = "position-absolute badge bg-primary">0</span>
+                <span class = "position-absolute badge bg-primary">{{ count((array) session('cart')) }}</span>
                 {{-- <a href="#" class="text-dark"><i class='bx bxs-heart'></i></a> --}}
 
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"

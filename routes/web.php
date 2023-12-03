@@ -34,4 +34,6 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store']);
 
+Route::get('/cart', [SaladController::class, 'index'])->name('cart')->middleware('auth');
 Route::get('/cart/{id}', [SaladController::class, 'addSalad'])->name('addsalad.to.cart')->middleware('auth');
+Route::delete('/delete-cart-product', [SaladController::class, 'destroy'])->name('delete.cart.product');

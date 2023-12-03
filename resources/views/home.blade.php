@@ -61,6 +61,14 @@
                     <button class="btn m-2 text-dark" type="button">New</button> --}}
                 </div>
 
+                <div class="mt-3">
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </div>
+
                 <div class = "collection-list mt-4 row gx-0 gy-3">
                     @foreach ($salads as $key => $data )
                     <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
