@@ -24,7 +24,7 @@
             </div>
 
             <div class="order-lg-2 side-icon nav-btns">
-                <a href="{{ route('cart') }}" class="position-relative text-dark text-center px-2 py-2">
+                <a href="#" class="position-relative text-dark text-center px-2 py-2">
                     <i class='bx bxs-cart'></i>
                 </a>
                 <span class = "position-absolute badge bg-primary">0</span>
