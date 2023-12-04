@@ -15,23 +15,32 @@ class SaladController extends Controller
     }
 
     public function addSalad($id)
-    {
-        $salad = Salad::findOrFail($id);
-        $cart = session()->get('cart', []); 
+{
+    $salad = Salad::findOrFail($id);
+    $cart = session()->get('cart', []); 
 
-        if (isset($cart[$id])) {
+    if (isset($cart[$id])) {
+        // Jika kunci 'quantity' sudah ada, tambahkan nilainya
+        if (isset($cart[$id]['quantity'])) {
             $cart[$id]['quantity']++;
         } else {
-            $cart[$id] = [
-                "name" => $salad->name,
-                "price" => $salad->price,
-                "image" => $salad->image,
-            ];
+            // Jika kunci 'quantity' belum ada, tambahkan kunci tersebut dan set nilainya menjadi 1
+            $cart[$id]['quantity'] = 1;
         }
-
-        session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product has been added to cart!');
+    } else {
+        // Jika $id belum ada di dalam $cart, tambahkan data salad dengan kunci 'quantity' diatur menjadi 1
+        $cart[$id] = [
+            "name" => $salad->name,
+            "price" => $salad->price,
+            "image" => $salad->image,
+            "quantity" => 1, // Set jumlah awal menjadi 1
+        ];
     }
+
+    session()->put('cart', $cart);
+    return redirect()->back()->with('success', 'Product has been added to cart!');
+}
+
 
     public function destroy(Request $request)
     {

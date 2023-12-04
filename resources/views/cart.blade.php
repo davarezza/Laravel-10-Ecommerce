@@ -38,7 +38,7 @@
                     </td>
                     <td data-th="Price">$ {{ $details['price'] }}</td>
 
-                    <td data-th="Subtotal" class="text-center"></td>
+                    <td data-th="Subtotal" class="text-center">{{ $details['quantity'] }}</td>
                     <td class="actions">
                         <a href="" class="btn btn-outline-danger btn-sm delete-product"><i class='bx bx-trash'></i></a>
                     </td>
@@ -60,11 +60,12 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript">
+<script type="text/javascript">
+    $(document).ready(function () {
+        updateCartSubtotal();
 
         $(".delete-product").click(function (e) {
             e.preventDefault();
-
             var ele = $(this);
 
             if (confirm("Do you really want to delete?")) {
@@ -81,5 +82,23 @@
                 });
             }
         });
+
+        function updateCartSubtotal() {
+            var totalProducts = 0;
+
+            // Menghitung total jumlah produk
+            $("#cart tbody tr").each(function () {
+                var quantity = parseInt($(this).find("td[data-th='Subtotal']").text());
+                if (!isNaN(quantity)) {
+                    totalProducts += quantity;
+                }
+            });
+
+            // Memperbarui tampilan subtotal di bagian tfoot
+            $("#cart tfoot td.text-right span").text(totalProducts);
+        }
+    });
+</script>
+
     </script>
 @endsection

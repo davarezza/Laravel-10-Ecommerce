@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('title')
-<title>About Us | {{ config('app.name') }}</title>
+    <title>About Us | {{ config('app.name') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 @endsection
 
 @section('container')

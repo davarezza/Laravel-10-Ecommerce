@@ -2,6 +2,7 @@
 
 @section('title')
 <title>Home | {{ config('app.name') }}</title>
+<link rel="stylesheet" href="{{ asset('css/main.css') }}">
 @endsection
 
 @section('container')
