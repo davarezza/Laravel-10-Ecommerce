@@ -15,7 +15,7 @@ class SaladController extends Controller
     }
 
     public function addSalad($id)
-{
+    {
     $salad = Salad::findOrFail($id);
     $cart = session()->get('cart', []); 
 

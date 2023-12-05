@@ -6,7 +6,7 @@
 
 @section('container') <br><br><br><br><br>
 <div class="container">
-    <h1>Shopping Cart</h1>
+    <h1>{{ explode(' ', auth()->user()->name)[0] }}'s Cart</h1>
     <div class="mt-3">
         @if (session('success'))
             <div class="alert alert-success">
@@ -17,6 +17,7 @@
 <table class="table table-bordered" id="cart">
     <thead>
       <tr>
+        <th scope="col">#</th>
         <th scope="col">Product</th>
         <th scope="col">Price</th>
         <th scope="col">Total</th>
@@ -28,6 +29,7 @@
             @foreach (session('cart') as $id => $details)
                 
                 <tr rowId="{{ $id }}">
+                    <td>{{ $loop->iteration }}</td>
                     <td data-th="Product">
                         <div class="row">
                             <div class="col-sm-3 hidden-xs"><img src="{{ asset('fotosalad') }}/{{ $details['image'] }}" alt="{{ $details['name'] }}" class="card-img-top"></div>
