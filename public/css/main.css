@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 .side-icon a {
     display: inline-flex;
     width: 2rem;

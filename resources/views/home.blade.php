@@ -13,7 +13,7 @@
                 <div class="text-center carousel-item active">
                     @auth
                         <h2 class="text-capitalize text-dark">Welcome, <span class="fw-bold">{{ auth()->user()->name }}</span></h2>
-                        <h2 class="text-capitalize py-2 text-dark">want to exit of your account?</h2>
+                        <h2 class="text-capitalize py-2 text-dark">want to leave this account ?</h2>
                         <form action="/logout" method="post">
                             @csrf
                             <button type="submit" class="btn mt-3 text-uppercase mx-2">Log out</button>
@@ -57,9 +57,6 @@
             <div class="row g-0">
                 <div class="d-flex flex-wrap justify-content-center mt-5">
                     <button class="btn m-2 text-dark active-filter-btn" type="button">All</button>
-                    {{-- <button class="btn m-2 text-dark" type="button">Best Sellers</button>
-                    <button class="btn m-2 text-dark" type="button">Featured</button>
-                    <button class="btn m-2 text-dark" type="button">New</button> --}}
                 </div>
 
                 <div class="mt-3">

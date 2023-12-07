@@ -14,12 +14,6 @@
                     <li class="nav-item px-2 py-2">
                         <a href="{{ route('about') }}" class="nav-link {{ ($active ==="about") ? 'active' : '' }}">About Us</a>
                     </li>
-                    <li class="nav-item px-2 py-2">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-dark" type="submit">Search</button>
-                        </form>
-                    </li>
                 </ul>
             </div>
 

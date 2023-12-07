@@ -1,4 +1,13 @@
    <!-- footer -->
+<style>
+    footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+</style>
+
    <footer class = "bg-dark py-5">
     <div class = "container">
         <div class = "row text-white g-4">
