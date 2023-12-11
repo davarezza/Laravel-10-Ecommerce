@@ -17,6 +17,8 @@ class SaladController extends Controller
     public function addSalad($id)
     {
     $salad = Salad::findOrFail($id);
+
+    // Mendapat atau membuat keranjang dari sesi
     $cart = session()->get('cart', []); 
 
     if (isset($cart[$id])) {
@@ -54,4 +56,94 @@ class SaladController extends Controller
             session()->flash('success', 'Product successfully deleted.');
         }
     }
+
+    public function tampil()
+    {
+        return view('tampil');
+    }
+
+    public function create()
+    {
+        return view('create', [
+            'active' => 'create'
+        ]);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $data = Salad::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            // tambahkan kolom lain yang perlu disimpan di sini
+        ]);
+    
+        if ($request->hasFile('image')) {
+            $request->file('image')->move('fotosalad/', $request->file('image')->getClientOriginalName());
+            $data->image = $request->file('image')->getClientOriginalName();
+            $data->save();
+        }
+    
+        return redirect()->route('home')->with('success', 'Salad added successfully');
+    }
+
+    public function edit($id)
+    {
+        $salad = Salad::findOrFail($id);
+        return view('edit', [
+            'active' => 'laporan',
+            'salad' => $salad
+        ]);
+    }
+
+    public function update(Request $request, $id)
+        {
+            $request->validate([
+                'name' => 'required',
+                'price' => 'required|numeric',
+                'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+        
+            $salad = Salad::findOrFail($id);
+        
+            // Cek apakah ada gambar baru yang dikirim
+            if ($request->hasFile('image')) {
+                // Hapus gambar sebelumnya
+                $oldImagePath = public_path('fotosiswa/' . $salad->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+        
+                // Simpan gambar yang baru diunggah
+                $request->file('image')->move('fotosalad/', $request->file('image')->getClientOriginalName());
+                $salad->image = $request->file('image')->getClientOriginalName();
+            }
+        
+            $salad->name = $request->name;
+            $salad->price = $request->price;
+            $salad->save();
+        
+            return redirect()->route('home')->with('success', 'Data berhasil diperbarui!');
+        }
+
+        public function hapus($id)
+    {
+        $salad = Salad::where('id',$id)->first();
+        $salad->delete();
+
+        //Delete Image
+
+        $image_name = $salad->image;
+        $image_path = 'products/' . $image_name;
+        if(file_exists($image_path)){
+          unlink($image_path);
+        }
+        return back()->with('success', 'Salad Deleted');
+    }
+
 }

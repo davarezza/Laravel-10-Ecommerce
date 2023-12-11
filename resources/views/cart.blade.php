@@ -6,7 +6,7 @@
 
 @section('container') <br><br><br><br><br>
 <div class="container">
-    <h1>{{ explode(' ', auth()->user()->name)[0] }}'s Cart</h1>
+    <h1 class="text-capitalize">{{ explode(' ', auth()->user()->name)[0] }}'s Cart</h1>
     <div class="mt-3">
         @if (session('success'))
             <div class="alert alert-success">
@@ -14,10 +14,11 @@
             </div>
         @endif
     </div>
-<table class="table table-bordered" id="cart">
+<table class="table" id="cart">
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Image</th>
         <th scope="col">Product</th>
         <th scope="col">Price</th>
         <th scope="col">Total</th>
@@ -30,9 +31,9 @@
                 
                 <tr rowId="{{ $id }}">
                     <td>{{ $loop->iteration }}</td>
+                    <td><img src="{{ asset('fotosalad') }}/{{ $details['image'] }}" alt="{{ $details['name'] }}" class="" width="150" height="120"></div></td>
                     <td data-th="Product">
                         <div class="row">
-                            <div class="col-sm-3 hidden-xs"><img src="{{ asset('fotosalad') }}/{{ $details['image'] }}" alt="{{ $details['name'] }}" class="card-img-top"></div>
                             <div class="col-sm-9">
                                 <h4 class="nomargin text-capitalize">{{ $details['name'] }}</h4>
                             </div>
@@ -51,9 +52,9 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5" class="text-right">
+            <td colspan="6" class="text-right">
                 <a href="{{ url('/home') }}" class="btn btn-primary">Continue Shopping</a>
-                <button class="btn btn-danger">Checkout</button>
+                <a href="{{ route('tampil') }}" class="btn btn-danger">Checkout</a>
             </td>
         </tr>
     </tfoot>

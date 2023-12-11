@@ -37,11 +37,10 @@
                     <h2 class = "position-relative d-inline-block ms-4">Langganan</h2>
                 </div>
 
-                <p class = "text-center text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-                    rem officia accusantium maiores quisquam dolorum?</p>
+                <p class = "text-center text-muted">Mari berlangganan di kedai kami dan ikuti perkembangan kedai ini dengan follow akun Instagram owner.</p>
                 <div class = "input-group mb-3 mt-3">
-                    <input type = "text" class = "form-control" placeholder="Enter Your Email ...">
-                    <button class = "btn btn-primary" type = "submit">Follow</button>
+                    <input type = "text" class = "form-control" disabled value="@rezza_dava">
+                    <a class = "btn btn-primary" href="#">Follow</a>
                 </div>
             </div>
         </div>

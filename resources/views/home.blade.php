@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
 @section('title')
-<title>Home | {{ config('app.name') }}</title>
-<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <title>Home | {{ config('app.name') }}</title>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 @endsection
 
 @section('container')
-{{-- Header --}}
+    {{-- Header --}}
     <header>
         <div id="header" class="vh-100 carousel slide" data-bs-ride="carousel">
             <div class="container d-flex align-items-center carousel-inner top-50 start-50 translate-middle banner">
@@ -16,8 +16,11 @@
                         <h2 class="text-capitalize py-2 text-dark">want to leave this account ?</h2>
                         <form action="/logout" method="post">
                             @csrf
-                            <button type="submit" class="btn mt-3 text-uppercase mx-2">Log out</button>
+                            <button type="submit" class="btn mt-3 mb-2 text-uppercase mx-2">Log out</button>
                         </form>
+                        @if(auth()->user()->email == 'dava@gmail.com')
+                            <a href="{{ route('salad.create') }}" class="btn btn-info text-uppercase">Tambah Produk</a>
+                        @endif
                     @else
                         <h2 class="text-capitalize text-dark">Don't have an account or</h2>
                         <h2 class="text-capitalize py-2 text-dark">haven't logged in yet ?</h2>
@@ -67,24 +70,31 @@
                     @endif
                 </div>
 
-                <div class = "collection-list mt-4 row gx-0 gy-3">
+                <div class="collection-list mt-4 row gx-0 gy-3">
                     @foreach ($salads as $key => $data )
-                    <div class = "col-md-6 col-lg-4 col-xl-3 p-2 best">
-                        <div class = "collection-img position-relative">
-                            <img src = "{{ asset('fotosalad/'.$data->image) }}" class = "w-100">
-                            <span
-                                class = "position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
+                        <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+                            <div class="collection-img position-relative">
+                                <img src="{{ asset('fotosalad/'.$data->image) }}" class="w-100" width="300" height="200">
+                                <span
+                                    class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
+                            </div>
+                            <div class="text-center mt-2">
+                                <p class="text-capitalize my-1">{{ $data->name }}</p>
+                                <span class="fw-bold">$ {{ $data->price }}</span><br>
+                                <a href="{{ route('product.edit', $data->id) }}" class="btn btn-primary">Edit</a>
+                                <form class="d-inline" action="products/{{ $data->id }}/delete" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                  </form>
+                                {{-- <a href="{{ route('addsalad.to.cart', $data->id) }}"
+                                    class="btn btn-primary mt-3">Add to Cart</a> --}}
+                            </div>
                         </div>
-                        <div class = "text-center mt-2">
-                            <p class = "text-capitalize my-1">{{ $data->name }}</p>
-                            <span class = "fw-bold">$ {{ $data->price }}</span><br>
-                            <a href = "{{ route('addsalad.to.cart', $data->id) }}" class = "btn btn-primary mt-3">Add to Cart</a>
-                        </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
         </div>
     </section>
     {{-- Collection End --}}
-    @endsection
+@endsection
