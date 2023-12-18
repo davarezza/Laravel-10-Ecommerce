@@ -54,7 +54,7 @@
         <tr>
             <td colspan="6" class="text-right">
                 <a href="{{ url('/home') }}" class="btn btn-primary">Continue Shopping</a>
-                <a href="{{ route('tampil') }}" class="btn btn-danger">Checkout</a>
+                <a href="#" class="btn btn-danger">Checkout</a>
             </td>
         </tr>
     </tfoot>

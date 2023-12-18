@@ -18,7 +18,7 @@
                             @csrf
                             <button type="submit" class="btn mt-3 mb-2 text-uppercase mx-2">Log out</button>
                         </form>
-                        @if(auth()->user()->email == 'dava@gmail.com')
+                        @if(auth()->user()->email == 'admin@gmail.com')
                             <a href="{{ route('salad.create') }}" class="btn btn-info text-uppercase">Tambah Produk</a>
                         @endif
                     @else
@@ -71,27 +71,37 @@
                 </div>
 
                 <div class="collection-list mt-4 row gx-0 gy-3">
-                    @foreach ($salads as $key => $data )
-                        <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
-                            <div class="collection-img position-relative">
-                                <img src="{{ asset('fotosalad/'.$data->image) }}" class="w-100" width="300" height="200">
-                                <span
-                                    class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
-                            </div>
-                            <div class="text-center mt-2">
-                                <p class="text-capitalize my-1">{{ $data->name }}</p>
-                                <span class="fw-bold">$ {{ $data->price }}</span><br>
-                                <a href="{{ route('product.edit', $data->id) }}" class="btn btn-primary">Edit</a>
-                                <form class="d-inline" action="products/{{ $data->id }}/delete" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                  </form>
-                                {{-- <a href="{{ route('addsalad.to.cart', $data->id) }}"
-                                    class="btn btn-primary mt-3">Add to Cart</a> --}}
-                            </div>
+                    @foreach ($salads as $key => $data)
+                    <div class="col-md-6 col-lg-4 col-xl-3 p-2 best">
+                        <div class="collection-img position-relative">
+                            <img src="{{ asset('fotosalad/'.$data->image) }}" class="w-100" width="300" height="200">
+                            <span class="position-absolute bg-primary text-white d-flex align-items-center justify-content-center">Sale</span>
                         </div>
-                    @endforeach
+                        <div class="text-center mt-2">
+                            <p class="text-capitalize my-1">{{ $data->name }}</p>
+                            <span class="fw-bold">$ {{ $data->price }}</span><br>
+                            
+                            @auth
+                                @if(auth()->user()->email == 'admin@gmail.com')
+                                    <!-- Jika pengguna adalah admin, tampilkan tombol Edit dan Delete -->
+                                    <a href="{{ route('product.edit', $data->id) }}" class="btn btn-primary">Edit</a>
+                                    <form class="d-inline mx-2" action="products/{{ $data->id }}/delete" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                @else
+                                    <!-- Jika pengguna bukan admin, tampilkan tombol Add to Cart -->
+                                    <a href="{{ route('addsalad.to.cart', $data->id) }}" class="btn btn-primary mt-3">Add to Cart</a>
+                                @endif
+                            @else
+                                <!-- Jika pengguna belum login, tampilkan tombol Add to Cart -->
+                                <a href="{{ route('addsalad.to.cart', $data->id) }}" class="btn btn-primary mt-3">Add to Cart</a>
+                            @endauth
+                        </div>
+                        
+                    </div>
+                @endforeach                
                 </div>
             </div>
         </div>

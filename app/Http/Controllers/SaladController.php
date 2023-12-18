@@ -57,11 +57,6 @@ class SaladController extends Controller
         }
     }
 
-    public function tampil()
-    {
-        return view('tampil');
-    }
-
     public function create()
     {
         return view('create', [
