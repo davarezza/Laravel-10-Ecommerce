@@ -26,7 +26,7 @@ Savor Salads is an online shop website that specializes in the sale of fruit sal
     ![image](https://github.com/davarezza/Laravel-10-Ecommerce/assets/132239881/5bbab274-7b63-41d8-9798-f7902b0d7bdf)
 
 - **Admin Panel:**
-  - Admins (email admin: admin@gmail.com) can perform CRUD operations on products.
+  - Admins (email admin: admin@gmail.com password admin: 123) can perform CRUD operations on products.
   - Add, edit, and delete products in the admin panel.
 
 #### Admin :
